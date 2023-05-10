@@ -1,0 +1,12 @@
+micronaut:
+  application:
+    name: onlinegameIng
+  server:
+    max-request-size: 1GB
+    multipart:
+      max-file-size: 10MB
+
+netty:
+  default:
+    allocator:
+      max-order: 3

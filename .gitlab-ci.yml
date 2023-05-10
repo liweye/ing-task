@@ -1,0 +1,19 @@
+stages:
+  - test
+
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+include:
+  - template: Security/License-Scanning.gitlab-ci.yml
+  - template: Security/SAST.gitlab-ci.yml
+
+tests:
+  stage: test
+  image: gradle:8.0.1-jdk17
+  script:
+    - gradle test
+  allow_failure: false
